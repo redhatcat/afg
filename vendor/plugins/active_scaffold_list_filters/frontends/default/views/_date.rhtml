@@ -1,0 +1,17 @@
+<% 
+name = list_filter_input_name(filter)
+
+start_date, end_date = filter.parse_dates(filter_session[:start_date], filter_session[:end_date]) if filter_session
+start_date ||= filter.params[:start_date]
+end_date ||= filter.params[:end_date]
+
+%>
+<% if defined?(calendar_date_select) %>
+<%= calendar_date_select_tag("#{name}[start_date]", start_date, :onchange => "$('#{list_filter_form_id}').onsubmit();") %>
+to
+<%= calendar_date_select_tag("#{name}[end_date]", end_date, :onchange => "$('#{list_filter_form_id}').onsubmit();") %>
+<% else %>
+<%= select_date(start_date, :prefix => "#{name}[start_date]") %>
+to
+<%= select_date(end_date, :prefix => "#{name}[end_date]") %>
+<% end %>

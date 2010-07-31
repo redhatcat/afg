@@ -1,0 +1,18 @@
+<% filter.values.each do |v| %>
+  <%
+    session_value = nil
+    session_value = (filter_session.include? v.to_s) unless filter_session.nil?
+    session_value = (filter.params.include? v.to_s) unless filter.params.nil?
+  -%>
+      <div style='display: inline; float: left; width: 17em; overflow: hidden;'>
+        <% if v == 'NOT' %>
+          <%= content_tag(:label,
+            check_box_tag(list_filter_input_name(filter) + "[]",
+            "NOT", session_value) + "&nbsp;Exclude selections") %>
+        <% else %>
+        <%= content_tag(:label,
+            check_box_tag(list_filter_input_name(filter) + "[]",
+            "#{v}", session_value) + "&nbsp;#{v}") %>
+        <% end %>
+      </div>
+<% end %>

@@ -1,0 +1,11 @@
+development:
+  adapter: postgresql
+  database: afg_development
+
+test:
+  adapter: postgresql
+  database: afg_test
+
+production:
+  adapter: postgresql
+  database: afg_production

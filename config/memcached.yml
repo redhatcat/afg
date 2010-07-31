@@ -1,0 +1,6 @@
+development:
+  ttl: 604800
+  namespace: afg
+  sessions: false
+  debug: false
+  servers: localhost:11211
